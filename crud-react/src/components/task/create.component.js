@@ -13,9 +13,9 @@ export default function CreateTask() {
  
   const [description, setDescription] = useState("")
   const [assignee, setAssignee] = useState("")
-  const [priority, setPriority] = useState("")
+  const [priority, setPriority] = useState("Low")
   const [duedate, setDueDate] = useState("")
-  const [status, setStatus] = useState("")
+  const [status, setStatus] = useState("Pending")
   const [validationError,setValidationError] = useState({})
 
   const createTask = async (e) => {
@@ -88,10 +88,9 @@ export default function CreateTask() {
                       <Col>
                         <Form.Group controlId="Priority">
                             <Form.Label>Priority</Form.Label>
-                            <Form.Select onChange={(event)=>{
+                            <Form.Select defaultValue={priority} onChange={(event)=>{
                               setPriority(event.target.value)
                             }}>
-							  <option value="">Select</option>
 							  <option value="Low">Low</option>
 							  <option value="Medium">Medium</option>
 							  <option value="High">High</option>
@@ -124,10 +123,9 @@ export default function CreateTask() {
                       <Col>
                         <Form.Group controlId="Status">
                             <Form.Label>Status</Form.Label>
-                            <Form.Select onChange={(event)=>{
+                            <Form.Select defaultValue={status} onChange={(event)=>{
                               setStatus(event.target.value)
                             }}>
-							  <option value="">Select</option>
 							  <option value="Pending">Pending</option>
 							  <option value="In Progress">In Progress</option>
 							  <option value="Complete">Complete</option>

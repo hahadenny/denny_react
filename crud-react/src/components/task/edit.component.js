@@ -18,7 +18,7 @@ export default function EditUser() {
   const [priority, setPriority] = useState("")
   const [duedate, setDueDate] = useState("")
   const [status, setStatus] = useState("")
-  const [isadmin, setIsAdmin] = useState("")
+  const [isadmin, setIsAdmin] = useState(0)
   const [validationError,setValidationError] = useState({})
   const [isDisabled, setIsDisabled] = useState(true);
 
