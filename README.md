@@ -60,7 +60,7 @@ TEST_USERNAME='Denny'
 TEST_IS_ADMIN=0  #0 or 1
 ```
 
-### 8. Swagger Documentation
+### 8. Denny Task API Documentation
 
 wget [https://github.com/hahadenny/denny_react/raw/master/denny-task-api-swagger.zip](https://github.com/hahadenny/denny_react/raw/master/denny-task-api-swagger.zip)
 ```bash
