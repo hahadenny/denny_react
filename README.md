@@ -4,7 +4,7 @@
 ### 1. To Clone Denny Task Application:
 
 ```bash
-git clone git@github.com:hahadenny/denny_task.git
+git clone git@github.com:hahadenny/denny_react.git
 ```
 
 ### 2. Install vendor dependencies:
