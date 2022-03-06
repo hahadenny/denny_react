@@ -99,6 +99,26 @@ class BasicTest extends TestCase
 				]]);
 	}
 	
+	public function testgetTaskById()
+    {
+		global $taskId;
+		$data = array();
+        $this->json('GET', "/api/tasks/$taskId", $data, ['Accept' => 'application/json'])
+			->assertStatus(200)
+            ->assertJsonStructure(
+				['*' => [
+					"Id",
+					"DateAdded",
+					"DateUpdated",
+					"Creator",
+					"Assignee",
+					"Description",
+					"Priority",
+					"DueDate",
+					"Status"
+				]]);
+    }
+	
 	public function testEditTask() 
 	{
 		global $taskId;
