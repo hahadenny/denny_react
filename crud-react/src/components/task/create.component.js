@@ -3,7 +3,8 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import axios from 'axios'
+//import axios from 'axios'
+import axios from "./axios-instance";
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom'
 
@@ -21,17 +22,13 @@ export default function CreateTask() {
     e.preventDefault();
 
     const formData = new FormData()
-	if (!priority)
-		var priority="Low";
-	if (!status)
-		var status="Pending";
     formData.append('Description', description)
 	formData.append('Assignee', assignee)
 	formData.append('Priority', priority)
 	formData.append('DueDate', duedate)
 	formData.append('Status', status)
 
-    await axios.post('http://dev3.volateam.com/dchoi/denny_react/public/api/tasks', formData).then(({data})=>{
+    await axios.post('/api/tasks', formData).then(({data})=>{
       Swal.fire({
         icon:"success",
         text:data.message
@@ -94,6 +91,7 @@ export default function CreateTask() {
                             <Form.Select onChange={(event)=>{
                               setPriority(event.target.value)
                             }}>
+							  <option value="">Select</option>
 							  <option value="Low">Low</option>
 							  <option value="Medium">Medium</option>
 							  <option value="High">High</option>
@@ -126,9 +124,10 @@ export default function CreateTask() {
                       <Col>
                         <Form.Group controlId="Status">
                             <Form.Label>Status</Form.Label>
-                            <Form.Select defaultValue={"Pending"} onChange={(event)=>{
+                            <Form.Select onChange={(event)=>{
                               setStatus(event.target.value)
                             }}>
+							  <option value="">Select</option>
 							  <option value="Pending">Pending</option>
 							  <option value="In Progress">In Progress</option>
 							  <option value="Complete">Complete</option>

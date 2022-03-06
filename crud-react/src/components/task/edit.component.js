@@ -4,7 +4,8 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useNavigate, useParams } from 'react-router-dom'
-import axios from 'axios';
+//import axios from 'axios';
+import axios from "./axios-instance";
 import Swal from 'sweetalert2';
 
 export default function EditUser() {
@@ -26,7 +27,7 @@ export default function EditUser() {
   }, [])
 
   const fetchTask = async () => {
-    await axios.get(`http://dev3.volateam.com/dchoi/denny_react/public/api/tasks/${id}`).then(({data})=>{
+    await axios.get(`/api/tasks/${id}`).then(({data})=>{
       const { Description, Assignee, Priority, DueDate, Status, IsAdmin } = data.task
       setDescription(Description)
 	  setAssignee(Assignee)
@@ -34,7 +35,7 @@ export default function EditUser() {
 	  setDueDate(DueDate)
 	  setStatus(Status)	  
 	  setIsAdmin(IsAdmin)
-	  if (IsAdmin == 1)
+	  if (IsAdmin === '1')
 		setIsDisabled(false);
     }).catch(({response:{data}})=>{
       Swal.fire({
@@ -56,7 +57,7 @@ export default function EditUser() {
 	formData.append('DueDate', duedate)
 	formData.append('Status', status)
 
-    await axios.post(`http://dev3.volateam.com/dchoi/denny_react/public/api/tasks/${id}`, formData).then(({data})=>{
+    await axios.post(`/api/tasks/${id}`, formData).then(({data})=>{
       Swal.fire({
         icon:"success",
         text:data.message

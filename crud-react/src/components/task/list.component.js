@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button'
-import axios from 'axios';
+//import axios from 'axios';
+import axios from "./axios-instance";
 import Swal from 'sweetalert2'
 
 export default function List() {
@@ -13,7 +14,7 @@ export default function List() {
     },[])
 
     const fetchTasks = async () => {
-        await axios.get(`http://dev3.volateam.com/dchoi/denny_react/public/api/tasks`).then(({data})=>{
+        await axios.get(`/api/tasks`).then(({data})=>{
             setTasks(data)
         })
     }
@@ -35,7 +36,7 @@ export default function List() {
             return;
           }
 
-          await axios.delete(`http://dev3.volateam.com/dchoi/denny_react/public/api/tasks/${id}`).then(({data})=>{
+          await axios.delete(`/api/tasks/${id}`).then(({data})=>{
             Swal.fire({
                 icon:"success",
                 text:data.message
