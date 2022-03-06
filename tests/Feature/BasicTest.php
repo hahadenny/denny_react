@@ -106,7 +106,7 @@ class BasicTest extends TestCase
         $this->json('GET', "/api/tasks/$taskId", $data, ['Accept' => 'application/json'])
 			->assertStatus(200)
             ->assertJsonStructure(
-				['*' => [
+				['task' => [
 					"Id",
 					"DateAdded",
 					"DateUpdated",
