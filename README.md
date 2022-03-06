@@ -45,6 +45,7 @@ vi crud-react/src/components/task/axios-instance.js
 #change baseURL to your own domain
 
 cd crud-react
+npm install
 npm run start
 ```
 
